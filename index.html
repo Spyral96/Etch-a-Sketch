@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <title>ETCH-a-SKETCH</title>
+
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    
+ </head>
+
+ <body>
+    <h1>ETCH-a-SKETCH</h1>
+    <!--User Input So They Can Determine the size of the canvas (max 25) (ex:10 is 10 by 10)-->
+    
+    <form id="canvasSizeInput" >
+        <label for ="canvasNumber">Enter a size number (Max:25 Min:7)</label>
+        <input type="number" id="canvasNumber" name="canvasNumber" min="7" max="25" required>
+        <button id="createCanvas" type="button">Create New Canvas</button>
+    </form>
+
+    
+
+
+    <!--Canvas-->
+    <div class = "pixelContainer">
+
+        
+    </div>
+
+    <!--Tool Bar-->
+    <div class="toolBarConatainer">
+
+    </div>
+
+
+
+
+    <!--Color Picker-->
+    <h2>Color Picker</h2>
+    <div class = "colorPicker">
+        <div id ="red"></div>
+        <div id ="blue"></div>
+        <div id ="yellow"></div>
+        <div id ="green"></div>
+        <div id ="purple"></div>
+        <div id ="black"></div>
+        <div id ="lightGray"></div>
+        <div id ="pink"></div>
+    </div>
+ </body>
+</html>
+
