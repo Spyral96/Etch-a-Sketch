@@ -1,1 +1,9 @@
+.pixelcontainer, .row{
+    border: black 10px;
+    display: flex;
+}
 
+.pixels {
+    border: black 10px;
+    color:rgb(0, 0, 0);
+}
