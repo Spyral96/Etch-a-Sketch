@@ -1,24 +1,26 @@
 //Create Canvas Button
 let createCanvasButton = document.querySelector("#createCanvas");
 
-
 let nonResfresh = document.querySelector("#canvasSizeInput") 
-//Input Value ButtonFuct
 
+//Input Value ButtonFuct
 function getCanvasSize()
 {
     return document.querySelector("#canvasNumber").value;
-
-    
 }
 
 
 let pixelContainer =  document.querySelector(".pixelContainer");
 
-rotatingCanvasNum = [];
 
+//so we can store the pevious CanvasNum in memory. This is need so when we delete the canvas we have the old number to give it proper instruction,otherwise it would use the new Canvas number which messes things up
+rotatingCanvasNum = [];
+//so it doesn't run removeCanvas() or delete when theres nothing to remove.Take note this is only appicible intially. Otherwise there will always be a canvas to delete on screen
 let noCanvas = true;
 
+
+
+//Main Canvas Create Button
 let canvasNum = createCanvasButton.addEventListener('click',function()
 {
     canvasNum = getCanvasSize();
@@ -29,14 +31,14 @@ let canvasNum = createCanvasButton.addEventListener('click',function()
         removeCanvas();
     }
 
-    
 
-
-    //Generating Canvas that is made from the user selected number. the number is squared to make said canvas
-    //and each title (div)has an id num in order of its position
+    //Generating Canvas that is made from the user selected number(CanvasNum). the number is squared to make said canvas
+    //Ex: 7 is 49 tiles
+    //and each title (div)has an id num in order of its position/rows labeled too
 
     for (let i = 0; i <canvasNum; i++)
     {
+        //looping rows
         console.log(canvasNum);
         let row = document.createElement('div');
         //to not have row start a zero
@@ -46,9 +48,7 @@ let canvasNum = createCanvasButton.addEventListener('click',function()
 
         pixelContainer.appendChild(row);
         
-        
-
-
+        //this so we can loop within each row (pixels within a row)
         for (let l = 1; l <= canvasNum; l++)
         {
             let column = document.createElement('div');
@@ -67,19 +67,14 @@ let canvasNum = createCanvasButton.addEventListener('click',function()
                 column.id = `pixel${l + i * canvasNum}`;
             }
 
-
-
-            
-
-        }
-        
-        
-        
+        } 
         
         
     }
 
     noCanvas = false;
+    
+    //we do this because we want to store the pervious CanvasNums, however we only need two at a time on said list (new and last used Canvas Number). A hard cap stops memory leaking
     if (rotatingCanvasNum.length <3)
     {
     rotatingCanvasNum.unshift(canvasNum);
@@ -98,6 +93,7 @@ let canvasNum = createCanvasButton.addEventListener('click',function()
 });
 
 
+//Folows the same/similar instructions as making the pixel, however we are destroying them now
 function removeCanvas()
 {
     let lastCanvasNum = rotatingCanvasNum[0];
@@ -150,6 +146,7 @@ function removeCanvas()
 
 }
 
+//test button
 let test = document.querySelector(".test");
 test.addEventListener('click',removeCanvas); 
 
