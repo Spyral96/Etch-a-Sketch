@@ -1,9 +1,14 @@
 .pixelcontainer, .row{
-    border: black 10px;
+    
+    width: 960px;
+    height: auto;
     display: flex;
+    justify-content: center;
 }
 
 .pixels {
-    border: black 10px;
+    border: solid black 1px;
+    height: 40px;
+    width: 40px;
     color:rgb(0, 0, 0);
 }
