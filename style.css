@@ -4,6 +4,7 @@
     height: auto;
     display: flex;
     justify-content: center;
+    margin: 0 auto;
 }
 
 .pixels {
@@ -11,4 +12,63 @@
     height: 40px;
     width: 40px;
     color:rgb(0, 0, 0);
+}
+
+h2{
+    text-align: center;
+}
+
+.colorPicker {
+    display: flex;
+    border: solid black 2px;
+    border-radius: 10px;
+    height: 50px;
+    width: 220px;
+    gap: 4px;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+    background-color: rgb(224, 224, 224);
+    
+}
+
+#red
+{
+    background-color: red;
+    
+}
+#blue
+{
+    background-color: blue;
+}
+#green
+{
+    background-color: green;
+}
+#yellow
+{
+    background-color: yellow;
+}
+#purple
+{
+    background-color: purple;
+}
+#black
+{
+    background-color: black;
+}
+#lightGray
+{
+    background-color: lightgray;
+}
+#pink
+{
+    background-color: pink;
+}
+
+.color{
+    height: 20px;
+    width: 20px;
+    border: solid black 1px;
+    border-radius: 100px;
 }
