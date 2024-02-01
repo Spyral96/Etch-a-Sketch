@@ -9,7 +9,7 @@ function getCanvasSize()
     return document.querySelector("#canvasNumber").value;
 }
 
-
+//Element on the canvas
 let pixelContainer =  document.querySelector(".pixelContainer");
 
 
@@ -72,6 +72,7 @@ let canvasNum = createCanvasButton.addEventListener('click',function()
         
     }
 
+    
     noCanvas = false;
     
     //we do this because we want to store the pervious CanvasNums, however we only need two at a time on said list (new and last used Canvas Number). A hard cap stops memory leaking
@@ -91,6 +92,10 @@ let canvasNum = createCanvasButton.addEventListener('click',function()
     
 
 });
+
+let pixels = document.querySelector('.pixels');
+
+
 
 
 //Folows the same/similar instructions as making the pixel, however we are destroying them now
@@ -149,5 +154,62 @@ function removeCanvas()
 //test button
 let test = document.querySelector(".test");
 test.addEventListener('click',removeCanvas); 
+
+
+//COLOR PICKER TOOL BAR
+
+
+let currentSelectedColor;
+//Colors
+red = document.querySelector("#red");
+
+red.addEventListener('click',function()
+{
+    currentSelectedColor = 'red';
+    
+    console.log(currentSelectedColor);
+})
+
+
+let clickDown =false;
+pixelContainer.addEventListener('mousedown',function(checkclick)
+{
+   return clickDown = true;
+   console.log("click")
+    
+})
+
+pixelContainer.addEventListener('mouseup',function(checkUnclick)
+{
+   return clickDown = false;
+    
+})
+
+
+//Paint Action
+pixelContainer.addEventListener('mouseover',function(paint)
+{
+    if (clickDown === true)
+    {
+        if (paint.target.classList.contains('pixels'))
+        {
+            switch (currentSelectedColor) 
+            {
+                case "red":
+                    paint.target.style.backgroundColor = 'red';
+                    console.log("canvas clicked");
+                    break;
+
+
+            }
+        }
+    }
+
+    else;
+})
+
+
+
+
 
 
