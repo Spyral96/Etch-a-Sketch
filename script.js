@@ -170,9 +170,6 @@ let eraser = document.querySelector('#eraser');
 red.addEventListener('click',function()
 {
     currentSelectedColor = 'red';
-    
-    
-    console.log(currentSelectedColor);
 })
 
 blue.addEventListener('click',function()
@@ -188,7 +185,6 @@ yellow.addEventListener('click',function()
 orange.addEventListener('click',function()
 {
     currentSelectedColor = 'orange';
-    console.log(currentSelectedColor);
 })
 
 green.addEventListener('click',function()
@@ -220,13 +216,12 @@ pink.addEventListener('click',function()
 eraser.addEventListener('click',function()
 {
     currentSelectedColor = 'eraser';
-    console.log(currentSelectedColor);
 })
 
 
 
 
-
+//The Ability To Hold Down And Drag To Paint
 let clickDown =false;
 pixelContainer.addEventListener('mousedown',function(checkclick)
 {
@@ -240,6 +235,9 @@ pixelContainer.addEventListener('mouseup',function(checkUnclick)
    return clickDown = false;
     
 })
+
+
+
 
 
 //Paint Function
@@ -298,8 +296,83 @@ pixelContainer.addEventListener('mouseover',function(paint)
         }
     }
 
-    else;
+    else if(clickDown === true && bigPaintBrushSize === true)
+    { 
+        switch (currentSelectedColor) 
+            {
+                case "red":
+                    paint.target.style.backgroundColor = 'red';
+                    console.log("canvas clicked");
+                    break;
+
+                case "blue":
+                    paint.target.style.backgroundColor = "blue";
+                    
+                    break;
+                case "yellow":
+                    paint.target.style.backgroundColor = 'yellow';
+                    break;
+
+                case "orange":
+                    paint.target.style.backgroundColor= 'orange';
+                    break;
+                
+                case "green":
+                    paint.target.style.backgroundColor = 'green';
+                    break;
+                
+                case "purple":
+                    paint.target.style.backgroundColor = 'purple';
+                    break;
+                
+                case "black":
+                    paint.target.style.backgroundColor = 'black';
+                    break;
+                
+                case "lightgray":
+                    paint.target.style.backgroundColor = 'lightgray';
+                    break;
+                
+                case "pink":
+                    paint.target.style.backgroundColor = 'pink';
+                    break;
+                
+                case "eraser":
+                    paint.target.style.backgroundColor = 'white';
+                    
+                    break;
+                    
+            }
+    }
 })
+
+
+//Paint Brush Size Increase
+let bigPaintBrushSizeON;
+let size2 = document.querySelector('#size2');
+
+size2.addEventListener('click',function(sizeGrow)
+{
+    let bigPaintBrushSize = true; 
+})
+
+
+//
+let clickLocation;
+pixelContainer.addEventListener('mousedown',function(getPixelID)
+{   
+    
+    clickLocation = getPixelID.target.id.substring(5);
+    clickLocation = parseInt(clickLocation);
+    console.log(clickLocation);
+    
+    
+
+})
+
+
+
+
 
 
 
