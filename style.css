@@ -14,16 +14,38 @@
     color:rgb(0, 0, 0);
 }
 
+#canvasSizeInput{
+    text-align: center;
+    background-color: lightgray;
+    margin: 0 auto;
+    padding: 5px;
+    width:500px;
+    border-radius: 100px;
+
+    margin-bottom: 10px;
+    
+}
+
+
 h2{
     text-align: center;
 }
+
+h1{
+    text-align: center;
+}
+
+
+
+
+
 
 .colorPicker {
     display: flex;
     border: solid black 2px;
     border-radius: 10px;
     height: 50px;
-    width: 220px;
+    width: 270px;
     gap: 4px;
     justify-content: center;
     margin: 0 auto;
@@ -49,6 +71,11 @@ h2{
 {
     background-color: yellow;
 }
+#orange
+{
+    background-color: orange;
+}
+
 #purple
 {
     background-color: purple;
@@ -65,10 +92,21 @@ h2{
 {
     background-color: pink;
 }
+#eraser
+{
+    background-color: white;
+}
+
 
 .color{
     height: 20px;
     width: 20px;
     border: solid black 1px;
     border-radius: 100px;
+
+}
+
+.color:hover{
+    border: solid yellow 2px;
+    
 }

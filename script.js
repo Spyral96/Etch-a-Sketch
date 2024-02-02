@@ -151,24 +151,80 @@ function removeCanvas()
 
 }
 
-//test button
-let test = document.querySelector(".test");
-test.addEventListener('click',removeCanvas); 
-
 
 //COLOR PICKER TOOL BAR
-
-
 let currentSelectedColor;
 //Colors
-red = document.querySelector("#red");
+let red = document.querySelector("#red");
+let blue= document.querySelector('#blue');
+let yellow = document.querySelector('#yellow');
+let orange = document.querySelector('#orange')
+let green = document.querySelector('#green');
+let purple = document.querySelector('#purple');
+let black = document.querySelector('#black');
+let lightGray = document.querySelector('#lightGray');
+let pink = document.querySelector('#pink');
+let eraser = document.querySelector('#eraser');
+
 
 red.addEventListener('click',function()
 {
     currentSelectedColor = 'red';
     
+    
     console.log(currentSelectedColor);
 })
+
+blue.addEventListener('click',function()
+{
+    currentSelectedColor = 'blue';
+})
+
+yellow.addEventListener('click',function()
+{
+    currentSelectedColor = 'yellow';
+})
+
+orange.addEventListener('click',function()
+{
+    currentSelectedColor = 'orange';
+    console.log(currentSelectedColor);
+})
+
+green.addEventListener('click',function()
+{
+    currentSelectedColor = 'green';
+})
+
+purple.addEventListener('click',function()
+{
+    currentSelectedColor = 'purple';
+})
+
+black.addEventListener('click',function()
+{
+    currentSelectedColor = 'black';
+})
+
+lightGray.addEventListener('click',function()
+{
+    currentSelectedColor = 'lightgray';
+})
+
+pink.addEventListener('click',function()
+{
+    currentSelectedColor = 'pink';
+})
+
+
+eraser.addEventListener('click',function()
+{
+    currentSelectedColor = 'eraser';
+    console.log(currentSelectedColor);
+})
+
+
+
 
 
 let clickDown =false;
@@ -186,7 +242,7 @@ pixelContainer.addEventListener('mouseup',function(checkUnclick)
 })
 
 
-//Paint Action
+//Paint Function
 pixelContainer.addEventListener('mouseover',function(paint)
 {
     if (clickDown === true)
@@ -200,8 +256,45 @@ pixelContainer.addEventListener('mouseover',function(paint)
                     console.log("canvas clicked");
                     break;
 
+                case "blue":
+                    paint.target.style.backgroundColor = "blue";
+                    
+                    break;
+                case "yellow":
+                    paint.target.style.backgroundColor = 'yellow';
+                    break;
 
+                case "orange":
+                    paint.target.style.backgroundColor= 'orange';
+                    break;
+                
+                case "green":
+                    paint.target.style.backgroundColor = 'green';
+                    break;
+                
+                case "purple":
+                    paint.target.style.backgroundColor = 'purple';
+                    break;
+                
+                case "black":
+                    paint.target.style.backgroundColor = 'black';
+                    break;
+                
+                case "lightgray":
+                    paint.target.style.backgroundColor = 'lightgray';
+                    break;
+                
+                case "pink":
+                    paint.target.style.backgroundColor = 'pink';
+                    break;
+                
+                case "eraser":
+                    paint.target.style.backgroundColor = 'white';
+                    console.log(currentSelectedColor);
+                    break;
+                    
             }
+            
         }
     }
 
