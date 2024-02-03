@@ -95,8 +95,6 @@ let canvasNum = createCanvasButton.addEventListener('click',function()
 let pixels = document.querySelector('.pixels');
 
 
-
-
 //Folows the same/similar instructions as making the pixel, however we are destroying them now
 function removeCanvas()
 {
@@ -107,9 +105,6 @@ function removeCanvas()
     pixelsToDelete = document.querySelector("#pixel1");
     rowsToDelete = document.querySelector("#row1");
 
-    
-    
-     
 
      for (i = 1; i <=lastCanvasNum;i++)
      {
@@ -123,8 +118,6 @@ function removeCanvas()
                 pixelsToDelete = document.querySelector(`#pixel${l}`);
                 console.log(`pixel${l} destroyed`);
                 rowsToDelete.removeChild(pixelsToDelete);
-
-
             }
             
             else
@@ -132,22 +125,12 @@ function removeCanvas()
                 pixelsToDelete = document.querySelector(`#pixel${l + (i-1) * lastCanvasNum}`);
                 
                 console.log(`pixel${l + (i-1) * lastCanvasNum} destroyed`);
-                rowsToDelete.removeChild(pixelsToDelete);
-                
+                rowsToDelete.removeChild(pixelsToDelete); 
             }
-            
-
         }
         console.log(`row${i} destroyed`);
         pixelContainer.removeChild(rowsToDelete);
-
-        
-
-    
     }
-
-    
-
 }
 
 
@@ -218,7 +201,6 @@ eraser.addEventListener('click',function()
 
 
 
-
 //The Ability To Hold Down And Drag To Paint
 let clickDown =false;
 pixelContainer.addEventListener('mousedown',function(checkclick)
@@ -265,11 +247,9 @@ size2Button.addEventListener('click',function()
 })
 
 
-
 //Paint Function
 pixelContainer.addEventListener('mouseover',function(paint)
 {
-    
     
         if (paint.target.classList.contains('pixels') && clickDown === true && bigPaintBrushSizeON=== false)
         {
@@ -317,9 +297,6 @@ function getSize2Brush()
     topRight = document.getElementById(`pixel${clickLocation-canvasNum}`);
     bottomLeft = document.getElementById(`pixel${clickLocation-1}`)
     
-
-    
-    
         let columnValues = getRightColumnValues();
         
         if (columnValues.includes(topLeft.id))
@@ -353,22 +330,3 @@ function getRightColumnValues()
     }
     return rightColumnPixelIds;
 }
-
-
-//test
-testbutton = document.querySelector('.test');
-
-testbutton.addEventListener('click',function()
-{
-   getRightColumnValues(); 
-})
-
-
-
-
-
-
-
-
-
-

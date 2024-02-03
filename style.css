@@ -1,3 +1,13 @@
+.middleSect{
+    display: flex;
+    
+    width: 80%;
+    gap:10px;
+
+    
+}
+
+
 .pixelcontainer, .row{
     
     width: 960px;
@@ -5,12 +15,17 @@
     display: flex;
     justify-content: center;
     margin: 0 auto;
+    
+    
+    
 }
+
+
 
 .pixels {
     border: solid black 1px;
-    height: 40px;
-    width: 40px;
+    height: 20px;
+    width: 20px;
     color:rgb(0, 0, 0);
 }
 
@@ -51,6 +66,7 @@ h1{
     margin: 0 auto;
     align-items: center;
     background-color: rgb(224, 224, 224);
+    
     
 }
 
@@ -108,5 +124,38 @@ h1{
 
 .color:hover{
     border: solid yellow 2px;
+    
+}
+
+.toolBarContainer
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+    width: 80px;
+    height: 90px;
+    background-color: lightgray;
+    align-items: center;
+    border: solid 2px black;
+    border-radius: 10px;
+    margin-left: 25%;
+    align-self:center;
+    
+    
+}
+
+.tools
+{
+    border: solid 2px black;
+    border-radius: 5px;
+    padding: 3px;
+    background-color: rgb(237, 237, 237);
+
+}
+
+.tools:hover
+{
+    background-color: yellow;
     
 }
