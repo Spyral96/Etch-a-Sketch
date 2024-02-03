@@ -19,7 +19,6 @@ rotatingCanvasNum = [];
 let noCanvas = true;
 
 
-
 //Main Canvas Create Button
 let canvasNum = createCanvasButton.addEventListener('click',function()
 {
@@ -212,10 +211,9 @@ pink.addEventListener('click',function()
     currentSelectedColor = 'pink';
 })
 
-
 eraser.addEventListener('click',function()
 {
-    currentSelectedColor = 'eraser';
+    currentSelectedColor = 'white';
 })
 
 
@@ -236,138 +234,133 @@ pixelContainer.addEventListener('mouseup',function(checkUnclick)
     
 })
 
+//Check ID location for each pixel mousedowned so we can use it later
+let clickLocation;
+pixelContainer.addEventListener('mouseover',function(getPixelID)
+{   
+    if (clickDown === true)
+    {
+    clickLocation = getPixelID.target.id.substring(5);
+    clickLocation = parseInt(clickLocation);
+    console.log(clickLocation);
+    }
 
+})
+
+//Paint Brush Size Increase
+let bigPaintBrushSizeON = false;
+let size2Button = document.getElementById('size2');
+let size1Button = document.getElementById('size1')
+
+size1Button.addEventListener('click',function()
+{
+    bigPaintBrushSizeON = false;
+    console.log(bigPaintBrushSizeON);
+})
+
+size2Button.addEventListener('click',function()
+{
+    bigPaintBrushSizeON = true; 
+    console.log(bigPaintBrushSizeON);
+})
 
 
 
 //Paint Function
 pixelContainer.addEventListener('mouseover',function(paint)
 {
-    if (clickDown === true)
-    {
-        if (paint.target.classList.contains('pixels'))
+    
+    
+        if (paint.target.classList.contains('pixels') && clickDown === true && bigPaintBrushSizeON=== false)
         {
-            switch (currentSelectedColor) 
-            {
-                case "red":
-                    paint.target.style.backgroundColor = 'red';
-                    console.log("canvas clicked");
-                    break;
+            paint.target.style.backgroundColor = currentSelectedColor;
+        }
 
-                case "blue":
-                    paint.target.style.backgroundColor = "blue";
-                    
-                    break;
-                case "yellow":
-                    paint.target.style.backgroundColor = 'yellow';
-                    break;
+        //if bigger brush icon is toggled on
+        else if (paint.target.classList.contains('pixels') && bigPaintBrushSizeON === true && clickDown ===true)
+        {   
+            paint.target.style.backgroundColor = currentSelectedColor;
+            getSize2Brush();
+        }
+    
 
-                case "orange":
-                    paint.target.style.backgroundColor= 'orange';
-                    break;
-                
-                case "green":
-                    paint.target.style.backgroundColor = 'green';
-                    break;
-                
-                case "purple":
-                    paint.target.style.backgroundColor = 'purple';
-                    break;
-                
-                case "black":
-                    paint.target.style.backgroundColor = 'black';
-                    break;
-                
-                case "lightgray":
-                    paint.target.style.backgroundColor = 'lightgray';
-                    break;
-                
-                case "pink":
-                    paint.target.style.backgroundColor = 'pink';
-                    break;
-                
-                case "eraser":
-                    paint.target.style.backgroundColor = 'white';
-                    console.log(currentSelectedColor);
-                    break;
-                    
-            }
+})
+
+
+
+//so pixel click gets colored in (bug)(like if you just click down and dont nothing gets filled out)
+pixelContainer.addEventListener('mousedown',function(paint)
+{
+    if (paint.target.classList.contains('pixels') && bigPaintBrushSizeON === false)
+        {
+            paint.target.style.backgroundColor = currentSelectedColor;
             
         }
-    }
+    
+     else if (paint.target.classList.contains('pixels') && bigPaintBrushSizeON === true) 
+     {
+        clickLocation = paint.target.id.substring(5);
+        clickLocation = parseInt(clickLocation);
+        console.log(clickLocation);
+        paint.target.style.backgroundColor = currentSelectedColor;
+        getSize2Brush();
+     }
 
-    else if(clickDown === true && bigPaintBrushSize === true)
-    { 
-        switch (currentSelectedColor) 
-            {
-                case "red":
-                    paint.target.style.backgroundColor = 'red';
-                    console.log("canvas clicked");
-                    break;
-
-                case "blue":
-                    paint.target.style.backgroundColor = "blue";
-                    
-                    break;
-                case "yellow":
-                    paint.target.style.backgroundColor = 'yellow';
-                    break;
-
-                case "orange":
-                    paint.target.style.backgroundColor= 'orange';
-                    break;
-                
-                case "green":
-                    paint.target.style.backgroundColor = 'green';
-                    break;
-                
-                case "purple":
-                    paint.target.style.backgroundColor = 'purple';
-                    break;
-                
-                case "black":
-                    paint.target.style.backgroundColor = 'black';
-                    break;
-                
-                case "lightgray":
-                    paint.target.style.backgroundColor = 'lightgray';
-                    break;
-                
-                case "pink":
-                    paint.target.style.backgroundColor = 'pink';
-                    break;
-                
-                case "eraser":
-                    paint.target.style.backgroundColor = 'white';
-                    
-                    break;
-                    
-            }
-    }
 })
 
 
-//Paint Brush Size Increase
-let bigPaintBrushSizeON;
-let size2 = document.querySelector('#size2');
-
-size2.addEventListener('click',function(sizeGrow)
+//Math/func that paints out a square 2 by 2 around curently click pixel 
+function getSize2Brush()
 {
-    let bigPaintBrushSize = true; 
-})
 
-
-//
-let clickLocation;
-pixelContainer.addEventListener('mousedown',function(getPixelID)
-{   
-    
-    clickLocation = getPixelID.target.id.substring(5);
-    clickLocation = parseInt(clickLocation);
-    console.log(clickLocation);
-    
+    topLeft = document.getElementById(`pixel${clickLocation-canvasNum-1}`);
+    topRight = document.getElementById(`pixel${clickLocation-canvasNum}`);
+    bottomLeft = document.getElementById(`pixel${clickLocation-1}`)
     
 
+    
+    
+        let columnValues = getRightColumnValues();
+        
+        if (columnValues.includes(topLeft.id))
+        {
+            topRight.style.backgroundColor = currentSelectedColor;
+        }
+        else if (columnValues.includes(bottomLeft.id))
+        {
+            topRight.style.backgroundColor = currentSelectedColor;
+        }
+         else
+        {
+            topLeft.style.backgroundColor = currentSelectedColor;
+            topRight.style.backgroundColor = currentSelectedColor;
+            bottomLeft.style.backgroundColor = currentSelectedColor;
+        }
+    
+    
+}
+
+//Detect Right Column in a list
+function getRightColumnValues()
+{   rightColumnPixelIds = [];
+    for(let i = 1; i <=25; i++)
+    {
+        
+        rightColumnPixelIds.push(`pixel${canvasNum *i}`);
+
+
+        console.log(rightColumnPixelIds);
+    }
+    return rightColumnPixelIds;
+}
+
+
+//test
+testbutton = document.querySelector('.test');
+
+testbutton.addEventListener('click',function()
+{
+   getRightColumnValues(); 
 })
 
 
